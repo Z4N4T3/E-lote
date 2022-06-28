@@ -112,3 +112,28 @@ CREATE TABLE Legal_H(
     FOREIGN KEY (v_id) references vehicle(id)
     
   )
+
+
+-- msgs
+create TABLE messages(
+  
+  id int PRIMARY KEY identity(1,1),
+  
+  subject varchar(150) not null,
+  body varchar (255) not null,
+  
+  msg_date DATETIME not null DEFAULT GETDATE(),
+  
+  v_id int not null,
+  
+  user_from int not null,
+  to_user int not null,
+  
+  FOREIGN KEY (user_from) references usr(id),
+  
+  FOREIGN KEY (to_user) references usr(id),
+  
+  FOREIGN KEY (v_id) references vehicle(id)
+  
+  
+  )

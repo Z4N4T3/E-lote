@@ -79,3 +79,36 @@ CREATE table vehicle(
   FOREIGN KEY (usr_id) references usr(id)
   
   )
+
+
+  -- mech & legal history
+
+
+CREATE TABLE Mech_H(
+  
+    id int PRIMARY KEY identity(1,1),
+    
+    Mech_Topic varchar(150) not null,
+    Mech_Description varchar(255) not null,
+    
+    v_id int not null,
+    
+  
+    FOREIGN KEY (v_id) references vehicle(id)
+    
+  )
+  
+    
+CREATE TABLE Legal_H(
+  
+    id int PRIMARY KEY identity(1,1),
+    
+    owner varchar(150) not null,
+    Legal_Description varchar(255) not null,
+    
+    v_id int not null,
+    
+  
+    FOREIGN KEY (v_id) references vehicle(id)
+    
+  )

@@ -1,3 +1,9 @@
+CREATE DATABASE elote;
+go
+USER elote;
+go
+
+
 CREATE TABLE usr(
   
   id int PRIMARY key identity (1,1),

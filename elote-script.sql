@@ -11,7 +11,7 @@ CREATE TABLE usr(
   user_passcode VARCHAR (255) not null,
   user_email varchar (255) not null
 
-  CONSTRAINT ck_email CHECK(user_email LIKE('__%@%.%'))
+  CONSTRAINT ck_email CHECK(user_email LIKE('__%@___%.___%'))
   
 )
   

@@ -13,7 +13,7 @@ CREATE TABLE usr(
 
   CONSTRAINT ck_email CHECK(user_email LIKE('__%@___%.___%'))
   
-)
+);
   
 CREATE TABLE report(
 
@@ -25,13 +25,13 @@ CREATE TABLE report(
   
   FOREIGN KEY (usr_id) references usr(id)
   
-  )
+  );
 
 
   create TABLE tipo(
   id int PRIMARY KEY identity (1,1),
   tipo_name varchar(255) not null unique
-  )
+  );
   
 create TABLE user_tipo(
   id int PRIMARY KEY identity (1,1),
@@ -41,7 +41,7 @@ create TABLE user_tipo(
   FOREIGN KEY (usr_id) references usr(id),
   FOREIGN KEY (tipo_id) references tipo(id)
 
-)
+);
 
 
 
@@ -53,7 +53,7 @@ CREATE table brand (
   brand_name varchar(255) not null unique
   
   
-  )
+  );
 
 CREATE table model (
   
@@ -64,7 +64,7 @@ CREATE table model (
   FOREIGN KEY (brand_id) references brand(id)
   
   
-  )
+  );
 
 CREATE table vehicle(
   
@@ -86,7 +86,7 @@ CREATE table vehicle(
   FOREIGN KEY (model_id) references model(id),
   FOREIGN KEY (usr_id) references usr(id)
   
-  )
+  );
 
 
   -- mech & legal history
@@ -104,7 +104,7 @@ CREATE TABLE Mech_H(
   
     FOREIGN KEY (v_id) references vehicle(id)
     
-  )
+  );
   
     
 CREATE TABLE Legal_H(
@@ -119,7 +119,7 @@ CREATE TABLE Legal_H(
   
     FOREIGN KEY (v_id) references vehicle(id)
     
-  )
+  );
 
 
 -- msgs
@@ -144,4 +144,4 @@ create TABLE messages(
   FOREIGN KEY (v_id) references vehicle(id)
   
   
-  )
+  );

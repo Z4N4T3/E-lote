@@ -1,6 +1,6 @@
 CREATE DATABASE elote;
 go
-USER elote;
+USE elote;
 go
 
 

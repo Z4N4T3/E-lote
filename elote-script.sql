@@ -7,7 +7,7 @@ go
 CREATE TABLE usr(
   
   id int PRIMARY key identity (1,1),
-  user_name varchar(255) not null unique,
+  username varchar(255) not null unique,
   user_passcode VARCHAR (255) not null,
   user_email varchar (255) not null
 

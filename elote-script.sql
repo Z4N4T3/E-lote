@@ -10,6 +10,8 @@ CREATE TABLE usr(
   user_name varchar(255) not null unique,
   user_passcode VARCHAR (255) not null,
   user_email varchar (255) not null
+
+  CONSTRAINT ck_email CHECK(user_email LIKE('__%@%.%'))
   
 )
   
@@ -19,25 +21,25 @@ CREATE TABLE report(
   report_topic varchar(150) not null,
   report_Description VARCHAR(255) not null,
   report_date DATETIME NOT null DEFAULT GETDATE(),
-  usr_id int
+  usr_id int not null,
   
   FOREIGN KEY (usr_id) references usr(id)
   
   )
 
 
-  create TABLE type(
+  create TABLE tipo(
   id int PRIMARY KEY identity (1,1),
-  type_name varchar(255) not null unique
+  tipo_name varchar(255) not null unique
   )
   
-create TABLE user_type(
+create TABLE user_tipo(
   id int PRIMARY KEY identity (1,1),
-  type_id int,
-  usr_id int,
+  tipo_id int not null,
+  usr_id int not null,
   
   FOREIGN KEY (usr_id) references usr(id),
-  FOREIGN KEY (type_id) references type(id)
+  FOREIGN KEY (tipo_id) references tipo(id)
 
 )
 
@@ -57,7 +59,7 @@ CREATE table model (
   
   id int PRIMARY KEY identity (1,1),
   model_name varchar(255) not null unique,
-  brand_id int,
+  brand_id int not null,
 	
   FOREIGN KEY (brand_id) references brand(id)
   
@@ -68,15 +70,15 @@ CREATE table vehicle(
   
   id int PRIMARY KEY identity (1,1), 
   plate CHAR(7) not null,
-  v_price decimal(8,2) not null,
-  v_year int not null,
-  v_gasConsume decimal(4,2),
+  v_price decimal(8,2) not null CHECK (v_price >0),
+  v_year int not null CHECK (v_year>1970 AND v_year<2022),
+  v_gasConsume decimal(4,2) CHECK(v_gasConsume>0),
   v_Kms decimal(8,2),
   is_spare bit, --repuesto (1.SI / 0.NO)
 
-  brand_id int,
-  model_id int,
-  usr_id int,
+  brand_id int not null,
+  model_id int not null,
+  usr_id int not null,
   
   v_date DATETIME not null DEFAULT GETDATE(),
   
